@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>She's coming Home ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -22,6 +25,8 @@
       justify-content: center;
       align-items: center;
       overflow-x: hidden;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     .container {
@@ -29,6 +34,8 @@
       max-width: 850px;
       padding: 35px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes sparkleAround {
@@ -83,8 +90,11 @@
     }
 
     h1 {
-      font-size: clamp(38px, 8vw, 72px);
+      font-family: "Dancing Script", "Brush Script MT", cursive, -apple-system, sans-serif;
+      font-weight: 700;
+      font-size: clamp(48px, 10vw, 92px);
       line-height: 1.05;
+      margin-top: 30px;
       margin-bottom: 15px;
       animation: textColorPulse 2s ease-in-out infinite;
     }
@@ -95,6 +105,13 @@
       margin-bottom: 35px;
     }
 
+    .route {
+      color: #c9aebe;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-top: 12px;
+    }
+
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -103,11 +120,11 @@
     }
 
     @keyframes borderPulse {
-      0%, 100% { 
+      0%, 100% {
         border-color: #f5b9d9;
         box-shadow: 0 0 8px rgba(245, 185, 217, 0.3);
       }
-      50% { 
+      50% {
         border-color: #ff6ba6;
         box-shadow: 0 0 15px rgba(255, 107, 166, 0.4);
       }
@@ -119,7 +136,6 @@
       border-radius: 22px;
       padding: 25px 10px;
       backdrop-filter: blur(10px);
-      animation: borderPulse 2s ease-in-out infinite;
     }
 
     .number {
@@ -173,6 +189,17 @@
       }
     }
 
+    .floating-heart {
+      position: fixed;
+      bottom: -5vh;
+      color: #ff6ba6;
+      pointer-events: none;
+      z-index: 0;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
     @media (max-width: 600px) {
       .countdown {
         grid-template-columns: repeat(2, 1fr);
@@ -186,11 +213,57 @@
       .message {
         font-size: 16px;
       }
+
+      .plane {
+        font-size: 20px;
+      }
+    }
+
+    @keyframes flyAcross {
+      0% {
+        transform: translateX(-10vw) rotate(0deg);
+        opacity: 0;
+      }
+      8% {
+        opacity: 1;
+      }
+      92% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(110vw) rotate(0deg);
+        opacity: 0;
+      }
+    }
+
+    .plane {
+      position: fixed;
+      top: 3%;
+      left: 0;
+      font-size: 26px;
+      z-index: 0;
+      pointer-events: none;
+      animation: flyAcross 14s linear infinite;
+      filter: drop-shadow(0 0 6px rgba(255, 182, 217, 0.5));
+      display: inline-block;
+    }
+
+    .plane::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: 90px;
+      height: 1px;
+      background: linear-gradient(to left, rgba(245, 185, 217, 0.6), transparent);
+      transform: translateY(-50%);
     }
   </style>
 </head>
 
 <body>
+
+  <div class="plane">✈️</div>
 
   <div class="container">
 
@@ -231,6 +304,7 @@
     </div>
 
     <div class="days-left" id="daysText"></div>
+    <div class="route">Denton ✈️ Hyderabad</div>
 
     <div class="footer">
       Made with ❤️ for Bindu Maneesha
