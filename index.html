@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Until I See You ❤️</title>
+  <title>She's coming Home ❤️</title>
 
   <style>
     * {
@@ -31,10 +31,48 @@
       text-align: center;
     }
 
+    @keyframes sparkleAround {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
     .heart {
       font-size: 65px;
       animation: heartbeat 1.6s infinite;
       margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .heart::after {
+      content: "✨";
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      font-size: 16px;
+      animation: sparkleAround 0.6s ease-in-out 4 forwards;
+    }
+
+    .small {
+      color: #d8b7ce;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    @keyframes textColorPulse {
+      0%, 100% {
+        color: #ffffff;
+      }
+      50% {
+        color: #ff6ba6;
+      }
     }
 
     @keyframes heartbeat {
@@ -44,18 +82,11 @@
       45% { transform: scale(1.1); }
     }
 
-    .small {
-      color: #d8b7ce;
-      font-size: 14px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
     h1 {
       font-size: clamp(38px, 8vw, 72px);
       line-height: 1.05;
       margin-bottom: 15px;
+      animation: textColorPulse 2s ease-in-out infinite;
     }
 
     .date {
@@ -71,12 +102,24 @@
       margin: 30px auto;
     }
 
+    @keyframes borderPulse {
+      0%, 100% { 
+        border-color: #f5b9d9;
+        box-shadow: 0 0 8px rgba(245, 185, 217, 0.3);
+      }
+      50% { 
+        border-color: #ff6ba6;
+        box-shadow: 0 0 15px rgba(255, 107, 166, 0.4);
+      }
+    }
+
     .box {
       background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 2px solid #f5b9d9;
       border-radius: 22px;
       padding: 25px 10px;
       backdrop-filter: blur(10px);
+      animation: borderPulse 2s ease-in-out infinite;
     }
 
     .number {
@@ -111,15 +154,6 @@
       margin-top: 45px;
       color: #8e7485;
       font-size: 13px;
-    }
-
-    .floating-heart {
-      position: fixed;
-      bottom: -30px;
-      font-size: 18px;
-      opacity: 0;
-      animation: floatUp 8s linear infinite;
-      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -199,7 +233,7 @@
     <div class="days-left" id="daysText"></div>
 
     <div class="footer">
-      Made with ❤️
+      Made with ❤️ for Bindu Maneesha
     </div>
 
   </div>
